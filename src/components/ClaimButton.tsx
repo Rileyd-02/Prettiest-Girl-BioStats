@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Confetti, Flower } from 'lucide-react';
+import { Flower, ArrowDown } from 'lucide-react';
 
 interface ClaimButtonProps {
   date: string;
@@ -74,7 +74,7 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
               onClick={handleClaim}
               className="px-8 py-6 text-lg gap-2 animate-pulse"
             >
-              <Confetti className="mr-2" />
+              <ArrowDown className="mr-2" />
               Claim This Date
               <Flower className="ml-2" />
             </Button>
