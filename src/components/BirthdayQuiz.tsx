@@ -15,10 +15,10 @@ const BirthdayQuiz: React.FC<BirthdayQuizProps> = ({ correctAnswer, onCorrectAns
 
   // These should be modified to include the correct answer and 3 wrong options
   const options = [
-    "April 15th",
-    "May 22nd", 
-    "June 7th",
-    "October 10th"
+    "January 20th",
+    "November 11th", 
+    "December 5th",
+    "October 15th"
   ];
 
   const handleOptionClick = (option: string) => {

@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Flower, ArrowDown } from 'lucide-react';
+import { Flower, ArrowDown, Star, Map, Sun, Turtle } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useToast } from '@/hooks/use-toast';
 
 interface ClaimButtonProps {
   date: string;
@@ -10,7 +12,9 @@ interface ClaimButtonProps {
 
 const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
   const [claimed, setClaimed] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [confetti, setConfetti] = useState<Array<{ id: number, x: number, y: number, color: string, size: number }>>([]);
+  const { toast } = useToast();
   
   const handleClaim = () => {
     setClaimed(true);
@@ -23,6 +27,16 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
       size: Math.random() * 10 + 5
     }));
     setConfetti(newConfetti);
+    
+    // Show popup after a short delay
+    setTimeout(() => {
+      setShowPopup(true);
+      toast({
+        title: "Date Claimed!",
+        description: "Text Riley to claim your gift *wink*",
+        duration: 6000,
+      });
+    }, 2000);
   };
 
   useEffect(() => {
@@ -83,6 +97,15 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
               <p className="text-lg text-center text-primary font-medium mb-6">
                 Your date has been claimed! I'll make it special for you.
               </p>
+              
+              {showPopup && (
+                <div className="bg-secondary/30 p-4 rounded-lg mb-6 animate-fadeIn">
+                  <p className="text-lg font-medium text-center">
+                    Text Riley to claim your gift *wink*
+                  </p>
+                </div>
+              )}
+              
               <Button 
                 onClick={onReset}
                 variant="outline"

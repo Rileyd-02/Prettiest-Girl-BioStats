@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Turtle, Star, Map, Sun } from 'lucide-react';
 
 interface DateWheelProps {
   dates: string[];
@@ -13,6 +14,14 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [rotation, setRotation] = useState(0);
   const wheelRef = useRef<HTMLDivElement>(null);
+
+  const getIcon = (dateIdea: string) => {
+    if (dateIdea.includes("turtle")) return <Turtle className="h-5 w-5 inline-block ml-1" />;
+    if (dateIdea.includes("Stargaze")) return <Star className="h-5 w-5 inline-block ml-1" />;
+    if (dateIdea.includes("Road trip")) return <Map className="h-5 w-5 inline-block ml-1" />;
+    if (dateIdea.includes("south")) return <Sun className="h-5 w-5 inline-block ml-1" />;
+    return null;
+  };
 
   const spinWheel = () => {
     if (spinning) return;
@@ -46,10 +55,10 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
         <Card className="bg-white shadow-xl p-6">
           <CardContent className="flex flex-col items-center p-4">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-              Spin for your December date!
+              Spin for your date idea!
             </h2>
             <p className="text-gray-600 text-center mb-8">
-              Let's see what special date awaits us...
+              Let's see what adventure awaits us...
             </p>
             
             <div className="relative w-64 h-64 mb-8">
@@ -110,7 +119,7 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
             
             {selectedDate && (
               <p className="mt-6 text-lg font-medium text-primary animate-fadeIn">
-                You got: <span className="font-bold">{selectedDate}</span>!
+                You got: <span className="font-bold">{selectedDate}</span> {getIcon(selectedDate)}
               </p>
             )}
           </CardContent>

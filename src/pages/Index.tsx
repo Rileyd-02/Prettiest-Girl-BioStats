@@ -12,7 +12,7 @@ const Index = () => {
   const [selectedDate, setSelectedDate] = useState<string>('');
   
   // Configuration (you can update these values as needed)
-  const correctBirthday = "May 22nd"; // Replace with the correct birthday
+  const correctBirthday = "November 11th"; // Updated to Riley's birthday
   const letterMessage = `My dearest graduate,
 
 I am so incredibly proud of you for achieving this milestone in your biostats journey. Your dedication, intelligence, and perseverance have been truly inspiring to watch.
@@ -23,12 +23,12 @@ I can't wait to celebrate with you in person this December. I've planned somethi
 
 You're not just the prettiest graduate in biostats - you're the most brilliant, passionate, and amazing person I know. I love you more than words can express.`;
 
-  const decemberDates = [
-    "Dec 10th", 
-    "Dec 15th", 
-    "Dec 20th", 
-    "Dec 25th", 
-    "Dec 30th"
+  const dateIdeas = [
+    "Go see turtles", 
+    "Stargaze", 
+    "Road trip", 
+    "Spend a night down south (If we're lucky)", 
+    "PowerBi Training"
   ];
   
   const handleGreetingContinue = () => {
@@ -62,7 +62,7 @@ You're not just the prettiest graduate in biostats - you're the most brilliant, 
       {currentStep === 1 && <Dandelion onWishMade={handleWishMade} />}
       {currentStep === 2 && <BirthdayQuiz correctAnswer={correctBirthday} onCorrectAnswer={handleCorrectAnswer} />}
       {currentStep === 3 && <Letter message={letterMessage} onClose={handleLetterClose} />}
-      {currentStep === 4 && <DateWheel dates={decemberDates} onDateSelected={handleDateSelected} />}
+      {currentStep === 4 && <DateWheel dates={dateIdeas} onDateSelected={handleDateSelected} />}
       {currentStep === 5 && <ClaimButton date={selectedDate} onReset={handleReset} />}
     </div>
   );
