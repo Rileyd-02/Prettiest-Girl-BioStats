@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Greeting from '@/components/Greeting';
 import Dandelion from '@/components/Dandelion';
@@ -6,6 +5,7 @@ import BirthdayQuiz from '@/components/BirthdayQuiz';
 import Letter from '@/components/Letter';
 import DateWheel from '@/components/DateWheel';
 import ClaimButton from '@/components/ClaimButton';
+import BackgroundMusic from '@/components/BackgroundMusic';
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -30,6 +30,9 @@ You're not just the prettiest graduate in biostats - you're the most brilliant, 
     "Spend a night down south (If we're lucky)", 
     "PowerBi Training"
   ];
+  
+  // Music URL - replace with your own music URL
+  const songUrl = "https://cdn.gpteng.co/samples/music/romantic-song.mp3";
   
   const handleGreetingContinue = () => {
     setCurrentStep(1); // Move to Dandelion step
@@ -64,6 +67,8 @@ You're not just the prettiest graduate in biostats - you're the most brilliant, 
       {currentStep === 3 && <Letter message={letterMessage} onClose={handleLetterClose} />}
       {currentStep === 4 && <DateWheel dates={dateIdeas} onDateSelected={handleDateSelected} />}
       {currentStep === 5 && <ClaimButton date={selectedDate} onReset={handleReset} />}
+      
+      <BackgroundMusic songUrl={songUrl} />
     </div>
   );
 };
