@@ -49,19 +49,23 @@ const Dandelion: React.FC<DandelionProps> = ({ onWishMade }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-100 to-purple-100 p-6 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center nyc-background p-6 relative overflow-hidden">
       <div className="text-center mb-8 z-10">
+        <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 animate-fadeIn" style={{animationDelay: '0.2s', animationFillMode: 'forwards'}}>
+          Make a Wish
+        </h1>
+        
         {showPrompt && !isBlown && (
-          <p className="text-lg md:text-xl text-gray-700 opacity-0 animate-fadeIn" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
-            Make a wish and tap the dandelion
+          <p className="text-lg md:text-xl text-white opacity-0 animate-fadeIn" style={{animationDelay: '0.5s', animationFillMode: 'forwards'}}>
+            Tap the dandelion
           </p>
         )}
         {showWishText && (
           <div className="opacity-0 animate-fadeIn" style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
-            <p className="text-2xl md:text-3xl text-primary font-bold mb-3">
+            <p className="text-2xl md:text-3xl text-white font-bold mb-3">
               Wish made!
             </p>
-            <p className="text-lg text-gray-700">
+            <p className="text-lg text-white">
               May it come true...
             </p>
           </div>
