@@ -30,7 +30,7 @@ Cant wait to see you again - see you soon 😘`;
   ];
   
   // Music URL - replace with your own music URL
-  const songUrl = "https://cdn.gpteng.co/samples/music/romantic-song.mp3";
+  const songUrl = "https://soundcloud.com/addisonraemusic/headphones-on?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing";
   
   const handleGreetingContinue = () => {
     setCurrentStep(1); // Move to Dandelion step
