@@ -13,22 +13,20 @@ const Index = () => {
   
   // Configuration (you can update these values as needed)
   const correctBirthday = "November 11th"; // Updated to Riley's birthday
-  const letterMessage = `My dearest graduate,
+  const letterMessage = `To the prettiest girl in biostats,
 
-I am so incredibly proud of you for achieving this milestone in your biostats journey. Your dedication, intelligence, and perseverance have been truly inspiring to watch.
-
-Even though we're physically apart, my heart is with you celebrating this special moment. You've worked so hard for this, and I want you to know that your accomplishments mean the world to me.
-
-I can't wait to celebrate with you in person this December. I've planned something special just for us, and I hope you're as excited as I am.
-
-You're not just the prettiest graduate in biostats - you're the most brilliant, passionate, and amazing person I know. I love you more than words can express.`;
+Congratulations, grad!!! 🎓❤️ I’m so happy for you and beyond proud of you. 
+You’ve worked so hard for this and absolutely deserve to celebrate like the queen of Coachella you are 👑 
+You’re the smartest, prettiest person I know, and I’m so lucky to have met you.
+Cant wait to see you again - see you soon 😘`;
 
   const dateIdeas = [
     "Go see turtles", 
     "Stargaze", 
     "Road trip", 
     "Spend a night down south (If we're lucky)", 
-    "PowerBi Training"
+    "PowerBi Training",
+    "Walk"
   ];
   
   // Music URL - replace with your own music URL
