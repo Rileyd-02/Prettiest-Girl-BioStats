@@ -24,7 +24,13 @@ const Greeting: React.FC<GreetingProps> = ({ onContinue }) => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center p-6 nyc-background relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center text-center p-6 relative overflow-hidden">
+      {/* Purple sunset background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-900 via-purple-700 to-pink-500 z-0"></div>
+      
+      {/* Overlay for better text visibility */}
+      <div className="absolute inset-0 bg-black/20 z-1"></div>
+      
       {/* Falling flowers */}
       {flowers.map((flower) => (
         <div
