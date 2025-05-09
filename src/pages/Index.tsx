@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Greeting from '@/components/Greeting';
 import Dandelion from '@/components/Dandelion';
@@ -15,9 +16,9 @@ const Index = () => {
   const correctBirthday = "November 11th"; // Updated to Riley's birthday
   const letterMessage = `To the prettiest girl in biostats,
 
-Congratulations, grad!!! 🎓❤️ I’m so happy for you and beyond proud of you. 
-You’ve worked so hard for this and absolutely deserve to celebrate like the queen of Coachella you are 👑 
-You’re the smartest, prettiest person I know, and I’m so lucky to have met you.
+Congratulations, grad!!! 🎓❤️ I'm so happy for you and beyond proud of you. 
+You've worked so hard for this and absolutely deserve to celebrate like the queen of Coachella you are 👑 
+You're the smartest, prettiest person I know, and I'm so lucky to have met you.
 Cant wait to see you again - see you soon 😘`;
 
   const dateIdeas = [
