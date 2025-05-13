@@ -56,11 +56,7 @@ const Letter: React.FC<LetterProps> = ({ message, onClose }) => {
                   {message}
                 </p>
               </div>
-              
-              <div className="text-right">
-                <p className="text-base sm:text-lg font-bold text-gray-700">With all my love,</p>
-              </div>
-              
+  
               <div className="mt-6 sm:mt-8 text-center">
                 <Button 
                   onClick={handleClose} 
