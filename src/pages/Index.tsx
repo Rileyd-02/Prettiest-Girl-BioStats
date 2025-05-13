@@ -16,10 +16,12 @@ const Index = () => {
   const correctBirthday = "November 11th"; // Updated to Riley's birthday
   const letterMessage = `To the prettiest girl in biostats,
 
-Congratulations, grad!!! 🎓❤️ I'm so happy for you and beyond proud of you. 
-You've worked so hard for this and absolutely deserve to celebrate like the queen of Coachella you are 👑 
-You're the smartest, prettiest person I know, and I'm so lucky to have met you.
-Cant wait to see you again - see you soon 😘`;
+Congratulations, Grad!!! 🎓❤️
+ You’re the smartest, prettiest, most ridiculously impressive human I know, and somehow you’re also the one who makes my heart do weird happy flips. 💛
+I feel so lucky to have met you—and luckier that I get to keep cheering for you even from a far. I miss you more than I want to admit and I’m counting down the days until I get to see you again.
+So proud of you. So happy for you. So sooo in love with everything you are. See you soon, grad 😘
+Bohoma Sthuthi!
+`;
 
   const dateIdeas = [
     "Go see turtles", 
@@ -27,7 +29,7 @@ Cant wait to see you again - see you soon 😘`;
     "Road trip", 
     "Spend a night down south (If we're lucky)", 
     "PowerBi Training",
-    "Walk"
+    "Go for a Walk"
   ];
   
   // Music URL - replace with your own music URL
