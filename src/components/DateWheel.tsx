@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Turtle, Star, Map, Sun } from 'lucide-react';
+import { Turtle, Star, Map, Sun, Sparkles } from 'lucide-react';
 
 interface DateWheelProps {
   dates: string[];
@@ -14,6 +14,27 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [rotation, setRotation] = useState(0);
   const wheelRef = useRef<HTMLDivElement>(null);
+  const [confetti, setConfetti] = useState<Array<{id: number, x: number, y: number, size: number, color: string, speed: number}>>([]);
+
+  useEffect(() => {
+    // Create confetti particles
+    const newConfetti = Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100, // Random x position (percent)
+      y: -(Math.random() * 20) - 10, // Start above the screen
+      size: Math.random() * 8 + 4, // Random size between 4-12px
+      color: getRandomColor(),
+      speed: 2 + Math.random() * 3 // Random fall speed
+    }));
+    
+    setConfetti(newConfetti);
+  }, []);
+  
+  // Get a random confetti color
+  const getRandomColor = () => {
+    const colors = ['#9b87f5', '#7E69AB', '#D6BCFA', '#8B5CF6', '#E5DEFF', '#6E59A5'];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
 
   const getIcon = (dateIdea: string) => {
     if (dateIdea.includes("turtle")) return <Turtle className="h-5 w-5 inline-block ml-1" />;
@@ -50,14 +71,32 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-purple-100 to-blue-100">
-      <div className="max-w-lg w-full">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-purple-100 to-blue-100 relative overflow-hidden">
+      {/* Falling confetti */}
+      {confetti.map((particle) => (
+        <div
+          key={particle.id}
+          className="absolute rounded-sm pointer-events-none"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            backgroundColor: particle.color,
+            animation: `fall ${particle.speed}s linear infinite`,
+            zIndex: 5
+          }}
+        />
+      ))}
+      
+      <div className="max-w-lg w-full relative z-10">
         <Card className="bg-white shadow-xl p-6">
           <CardContent className="flex flex-col items-center p-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-              Spin for your date idea!
+            <Sparkles className="h-8 w-8 text-purple-500 mb-2" />
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 font-montserrat">
+              Spin to Claim Graduation Gift in December
             </h2>
-            <p className="text-gray-600 text-center mb-8">
+            <p className="text-gray-600 text-center mb-8 font-montserrat">
               Let's see what adventure awaits us...
             </p>
             
@@ -94,7 +133,7 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
                       }}
                     >
                       <span
-                        className="absolute font-medium"
+                        className="absolute font-medium font-montserrat"
                         style={{
                           left: '75%',
                           transform: 'translateX(-50%) rotate(-90deg)',
@@ -112,13 +151,13 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
             <Button
               onClick={spinWheel}
               disabled={spinning}
-              className="px-8 py-6 text-lg"
+              className="px-8 py-6 text-lg font-montserrat"
             >
               {spinning ? "Spinning..." : "Spin the Wheel"}
             </Button>
             
             {selectedDate && (
-              <p className="mt-6 text-lg font-medium text-primary animate-fadeIn">
+              <p className="mt-6 text-lg font-medium text-primary animate-fadeIn font-montserrat">
                 You got: <span className="font-bold">{selectedDate}</span> {getIcon(selectedDate)}
               </p>
             )}
