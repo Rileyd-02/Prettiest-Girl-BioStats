@@ -47,20 +47,13 @@ const Letter: React.FC<LetterProps> = ({ message, onClose }) => {
             <CardContent className="p-3 sm:p-4">
               <div className="bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center h-32 sm:h-48 -mt-3 sm:-mt-4 -mx-3 sm:-mx-4 mb-4 sm:mb-6 rounded-t-lg opacity-90" />
               
-              <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 text-primary">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary">
                 Super Proud of You!
               </h3>
-              
-              <h4 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-secondary">
-                Congrats, Love!
-              </h4>
               
               <div className="prose max-w-none mb-6 sm:mb-8">
                 <p className="whitespace-pre-line text-sm sm:text-base text-gray-700">
                   {message}
-                </p>
-                <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 italic">
-                  The beaches are waiting for you, and Colombo misses the queen of Coachella!
                 </p>
               </div>
               
