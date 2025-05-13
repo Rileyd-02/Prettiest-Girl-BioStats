@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Music, VolumeX, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface BackgroundMusicProps {
   songUrl: string;
@@ -11,6 +12,7 @@ const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ songUrl }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (audioRef.current) {
@@ -49,29 +51,32 @@ const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ songUrl }) => {
     }
   };
 
+  const buttonSize = isMobile ? "w-7 h-7" : "w-8 h-8";
+  const iconSize = isMobile ? "h-3 w-3" : "h-4 w-4";
+
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg">
+    <div className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 flex items-center gap-1 sm:gap-2 bg-white/80 backdrop-blur-sm p-1.5 sm:p-2 rounded-full shadow-lg">
       <audio ref={audioRef} src={songUrl} loop />
       
       <Button 
         variant="ghost" 
         size="icon" 
         onClick={togglePlay}
-        className="rounded-full w-8 h-8"
+        className={`rounded-full ${buttonSize}`}
       >
-        <Music className={`h-4 w-4 ${isPlaying ? 'text-primary' : 'text-gray-400'}`} />
+        <Music className={`${iconSize} ${isPlaying ? 'text-primary' : 'text-gray-400'}`} />
       </Button>
 
       <Button
         variant="ghost"
         size="icon"
         onClick={toggleMute}
-        className="rounded-full w-8 h-8"
+        className={`rounded-full ${buttonSize}`}
       >
         {isMuted ? (
-          <VolumeX className="h-4 w-4 text-gray-400" />
+          <VolumeX className={`${iconSize} text-gray-400`} />
         ) : (
-          <Volume2 className="h-4 w-4 text-primary" />
+          <Volume2 className={`${iconSize} text-primary`} />
         )}
       </Button>
     </div>

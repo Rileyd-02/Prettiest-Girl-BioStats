@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Turtle, Star, Map, Sun, Sparkles } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface DateWheelProps {
   dates: string[];
@@ -15,6 +16,7 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
   const [rotation, setRotation] = useState(0);
   const wheelRef = useRef<HTMLDivElement>(null);
   const [confetti, setConfetti] = useState<Array<{id: number, x: number, y: number, size: number, color: string, speed: number}>>([]);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Create confetti particles
@@ -70,8 +72,10 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
     }, 3000); // Wait for animation to finish
   };
 
+  const wheelSize = isMobile ? "w-56 h-56" : "w-64 h-64";
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-purple-100 to-blue-100 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-purple-100 to-blue-100 relative overflow-hidden">
       {/* Falling confetti */}
       {confetti.map((particle) => (
         <div
@@ -89,18 +93,18 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
         />
       ))}
       
-      <div className="max-w-lg w-full relative z-10">
-        <Card className="bg-white shadow-xl p-6">
-          <CardContent className="flex flex-col items-center p-4">
-            <Sparkles className="h-8 w-8 text-purple-500 mb-2" />
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 font-montserrat">
+      <div className="w-full max-w-lg relative z-10 px-2 sm:px-0">
+        <Card className="bg-white shadow-xl p-4 sm:p-6">
+          <CardContent className="flex flex-col items-center p-2 sm:p-4">
+            <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 text-purple-500 mb-2" />
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 font-montserrat">
               Spin to Claim Graduation Gift in December
             </h2>
-            <p className="text-gray-600 text-center mb-8 font-montserrat">
+            <p className="text-sm sm:text-base text-gray-600 text-center mb-6 sm:mb-8 font-montserrat">
               Let's see what adventure awaits us...
             </p>
             
-            <div className="relative w-64 h-64 mb-8">
+            <div className={`relative ${wheelSize} mb-6 sm:mb-8`}>
               {/* The pointer triangle */}
               <div 
                 className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl z-10"
@@ -133,7 +137,7 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
                       }}
                     >
                       <span
-                        className="absolute font-medium font-montserrat"
+                        className="absolute font-medium font-montserrat text-xs sm:text-sm"
                         style={{
                           left: '75%',
                           transform: 'translateX(-50%) rotate(-90deg)',
@@ -151,13 +155,13 @@ const DateWheel: React.FC<DateWheelProps> = ({ dates, onDateSelected }) => {
             <Button
               onClick={spinWheel}
               disabled={spinning}
-              className="px-8 py-6 text-lg font-montserrat"
+              className="px-6 py-4 sm:px-8 sm:py-6 text-base sm:text-lg font-montserrat"
             >
               {spinning ? "Spinning..." : "Spin the Wheel"}
             </Button>
             
             {selectedDate && (
-              <p className="mt-6 text-lg font-medium text-primary animate-fadeIn font-montserrat">
+              <p className="mt-6 text-base sm:text-lg font-medium text-primary animate-fadeIn font-montserrat">
                 You got: <span className="font-bold">{selectedDate}</span> {getIcon(selectedDate)}
               </p>
             )}

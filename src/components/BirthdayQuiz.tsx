@@ -34,24 +34,24 @@ const BirthdayQuiz: React.FC<BirthdayQuizProps> = ({ correctAnswer, onCorrectAns
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-purple-100 to-pink-100">
-      <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-b from-purple-100 to-pink-100">
+      <div className="max-w-md w-full bg-white p-5 sm:p-8 rounded-2xl shadow-lg">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6">
           Quick question...
         </h2>
         
-        <p className="text-lg text-center mb-8">
+        <p className="text-base sm:text-lg text-center mb-6 sm:mb-8">
           When is Riley's birthday?
         </p>
         
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {options.map((option) => (
             <Button
               key={option}
               variant={selectedAnswer === option 
                 ? (isCorrect ? "default" : "destructive") 
                 : "outline"}
-              className={`w-full justify-between py-6 text-lg ${
+              className={`w-full justify-between py-4 sm:py-6 text-base sm:text-lg ${
                 selectedAnswer && selectedAnswer !== option ? 'opacity-60' : ''
               }`}
               onClick={() => !selectedAnswer && handleOptionClick(option)}
@@ -64,7 +64,7 @@ const BirthdayQuiz: React.FC<BirthdayQuizProps> = ({ correctAnswer, onCorrectAns
         </div>
         
         {showFeedback && (
-          <div className={`mt-6 text-center text-lg ${isCorrect ? 'text-green-600' : 'text-red-600'} animate-scaleIn`}>
+          <div className={`mt-4 sm:mt-6 text-center text-base sm:text-lg ${isCorrect ? 'text-green-600' : 'text-red-600'} animate-scaleIn`}>
             {isCorrect 
               ? "That's correct! Opening a special message..." 
               : "Not quite right. Try again!"}

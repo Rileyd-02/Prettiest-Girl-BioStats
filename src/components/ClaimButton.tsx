@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Flower, ArrowDown, Star, Map, Sun, Turtle } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Flower, ArrowDown } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface ClaimButtonProps {
@@ -51,7 +50,7 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
   }, [claimed]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 relative overflow-hidden">
       {/* Confetti elements */}
       {confetti.map((item) => (
         <div
@@ -71,13 +70,13 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
         />
       ))}
       
-      <div className="text-center z-20">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <div className="text-center z-20 w-full max-w-md px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
           {claimed ? "It's a date! 💕" : "Claim Your Date"}
         </h2>
         
-        <Card className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg max-w-md mx-auto mb-8">
-          <p className="text-xl text-center mb-8">
+        <Card className="bg-white/80 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-lg mx-auto mb-6 sm:mb-8">
+          <p className="text-base sm:text-xl text-center mb-6 sm:mb-8">
             {claimed
               ? "I can't wait to see you on this special day!"
               : `You've selected: ${date}`}
@@ -86,7 +85,7 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
           {!claimed ? (
             <Button 
               onClick={handleClaim}
-              className="px-8 py-6 text-lg gap-2 animate-pulse"
+              className="px-6 py-4 sm:px-8 sm:py-6 text-base sm:text-lg gap-2 animate-pulse"
             >
               <ArrowDown className="mr-2" />
               Claim This Date
@@ -94,13 +93,13 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
             </Button>
           ) : (
             <>
-              <p className="text-lg text-center text-primary font-medium mb-6">
+              <p className="text-base sm:text-lg text-center text-primary font-medium mb-4 sm:mb-6">
                 Your date has been claimed! I'll make it special for you.
               </p>
               
               {showPopup && (
-                <div className="bg-secondary/30 p-4 rounded-lg mb-6 animate-fadeIn">
-                  <p className="text-lg font-medium text-center">
+                <div className="bg-secondary/30 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 animate-fadeIn">
+                  <p className="text-base sm:text-lg font-medium text-center">
                     Text Riley to claim your gift *wink*
                   </p>
                 </div>
@@ -109,7 +108,7 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
               <Button 
                 onClick={onReset}
                 variant="outline"
-                className="px-6 py-4"
+                className="px-4 sm:px-6 py-2 sm:py-4"
               >
                 Start Over
               </Button>
