@@ -63,7 +63,7 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
                 
                 <div className="mt-2 py-3 px-6 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg border border-pink-200 shadow-sm">
                   <p className="text-center font-medium text-primary">
-                    Riley to claim gift ❤️
+                    Text Riley to claim gift ❤️
                   </p>
                 </div>
                 
