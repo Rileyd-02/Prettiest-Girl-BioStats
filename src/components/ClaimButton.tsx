@@ -61,6 +61,12 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
                   </p>
                 </div>
                 
+                <div className="mt-2 py-3 px-6 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg border border-pink-200 shadow-sm">
+                  <p className="text-center font-medium text-primary">
+                    Riley to claim gift ❤️
+                  </p>
+                </div>
+                
                 <Button 
                   onClick={onReset} 
                   variant="outline" 
