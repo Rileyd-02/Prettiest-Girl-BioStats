@@ -45,7 +45,7 @@ const Letter: React.FC<LetterProps> = ({ message, onClose }) => {
         ) : (
           <Card className="bg-white p-4 sm:p-8 shadow-xl animate-scaleIn">
             <CardContent className="p-3 sm:p-4">
-              <div className="bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center h-32 sm:h-48 -mt-3 sm:-mt-4 -mx-3 sm:-mx-4 mb-4 sm:mb-6 rounded-t-lg opacity-90" />
+              <div className="bg-[url('/lovable-uploads/52830bd3-dd5f-4b32-98bd-a13f1c3b3505.png')] bg-cover bg-center h-40 sm:h-56 -mt-3 sm:-mt-4 -mx-3 sm:-mx-4 mb-4 sm:mb-6 rounded-t-lg opacity-95" />
               
               <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary">
                 Super Proud of You!
