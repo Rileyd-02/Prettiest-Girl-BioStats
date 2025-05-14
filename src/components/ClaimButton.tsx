@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Flower, ArrowDown } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Calendar } from 'lucide-react';
 
 interface ClaimButtonProps {
   date: string;
@@ -11,119 +12,67 @@ interface ClaimButtonProps {
 
 const ClaimButton: React.FC<ClaimButtonProps> = ({ date, onReset }) => {
   const [claimed, setClaimed] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [confetti, setConfetti] = useState<Array<{ id: number, x: number, y: number, color: string, size: number }>>([]);
-  const { toast } = useToast();
-  
+
   const handleClaim = () => {
     setClaimed(true);
-    // Create confetti effect
-    const newConfetti = Array.from({ length: 100 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100, // Random x position (%)
-      y: Math.random() * 100, // Random y position (%)
-      color: ['#9333ea', '#e879f9', '#c084fc', '#d8b4fe', '#f0abfc'][Math.floor(Math.random() * 5)],
-      size: Math.random() * 10 + 5
-    }));
-    setConfetti(newConfetti);
-    
-    // Show popup after a short delay
-    setTimeout(() => {
-      setShowPopup(true);
-      toast({
-        title: "Date Claimed!",
-        description: "Text Riley to claim your gift *wink*",
-        duration: 6000,
-      });
-    }, 2000);
   };
 
-  useEffect(() => {
-    if (claimed) {
-      const timer = setTimeout(() => {
-        // Clear confetti after 5 seconds
-        setConfetti([]);
-      }, 5000);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [claimed]);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 relative overflow-hidden">
-      {/* Confetti elements */}
-      {confetti.map((item) => (
-        <div
-          key={item.id}
-          className="absolute animate-fadeIn"
-          style={{
-            left: `${item.x}%`,
-            top: `${item.y}%`,
-            backgroundColor: item.color,
-            width: `${item.size}px`,
-            height: `${item.size}px`,
-            borderRadius: '50%',
-            opacity: claimed ? 1 : 0,
-            transition: 'opacity 0.5s',
-            zIndex: 10,
-          }}
-        />
-      ))}
-      
-      <div className="text-center z-20 w-full max-w-md px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
-          {claimed ? "It's a date! 💕" : "Claim Your Date"}
-        </h2>
-        
-        <Card className="bg-white/80 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-lg mx-auto mb-6 sm:mb-8">
-          <p className="text-base sm:text-xl text-center mb-6 sm:mb-8">
-            {claimed
-              ? "I can't wait to see you on this special day!"
-              : `You've selected: ${date}`}
-          </p>
-          
-          {!claimed ? (
-            <Button 
-              onClick={handleClaim}
-              className="px-6 py-4 sm:px-8 sm:py-6 text-base sm:text-lg gap-2 animate-pulse"
-            >
-              <ArrowDown className="mr-2" />
-              Claim This Date
-              <Flower className="ml-2" />
-            </Button>
-          ) : (
-            <>
-              <p className="text-base sm:text-lg text-center text-primary font-medium mb-4 sm:mb-6">
-                Your date has been claimed! I'll make it special for you.
-              </p>
-              
-              {showPopup && (
-                <div className="bg-secondary/30 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 animate-fadeIn">
-                  <p className="text-base sm:text-lg font-medium text-center">
-                    Text Riley to claim your gift *wink*
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 bg-gradient-to-b from-purple-100 to-pink-100">
+      <div className="w-full max-w-md">
+        <Card className="bg-white shadow-xl">
+          <CardContent className="p-4 sm:p-6">
+            {!claimed ? (
+              <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+                <Calendar className="h-12 w-12 sm:h-16 sm:w-16 text-primary" />
+                
+                <h2 className="text-xl sm:text-2xl font-bold text-center">Date Selected!</h2>
+                
+                <p className="text-center text-gray-600 mb-2 sm:mb-4">
+                  You've selected: <span className="font-semibold text-primary">{date}</span>
+                </p>
+                
+                <Button 
+                  onClick={handleClaim} 
+                  className="w-full py-6 text-lg"
+                >
+                  Claim Your Date
+                </Button>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+                <div className="w-full mb-2 sm:mb-4 overflow-hidden rounded-lg">
+                  <AspectRatio ratio={16/9} className="bg-muted">
+                    <img 
+                      src="/lovable-uploads/8b63da97-21b5-4f95-97e6-1ad62bd3d8ab.png" 
+                      alt="Selfie" 
+                      className="w-full h-full object-cover"
+                    />
+                  </AspectRatio>
+                </div>
+                
+                <h2 className="text-xl sm:text-2xl font-bold text-center text-primary">
+                  Your date is confirmed!
+                </h2>
+                
+                <div className="prose max-w-none">
+                  <p className="text-center text-gray-700">
+                    Can't wait to see you again and missing you everyday.
                   </p>
                 </div>
-              )}
-              
-              <Button 
-                onClick={onReset}
-                variant="outline"
-                className="px-4 sm:px-6 py-2 sm:py-4"
-              >
-                Start Over
-              </Button>
-            </>
-          )}
+                
+                <Button 
+                  onClick={onReset} 
+                  variant="outline" 
+                  className="mt-4 sm:mt-6"
+                >
+                  Start Over
+                </Button>
+              </div>
+            )}
+          </CardContent>
         </Card>
       </div>
-    </div>
-  );
-};
-
-const Card = ({ children, className = "", ...props }) => {
-  return (
-    <div className={`rounded-lg ${className}`} {...props}>
-      {children}
     </div>
   );
 };
