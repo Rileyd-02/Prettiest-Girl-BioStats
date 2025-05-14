@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Greeting from '@/components/Greeting';
 import Dandelion from '@/components/Dandelion';
@@ -17,9 +16,9 @@ const Index = () => {
   const letterMessage = `To the prettiest girl in biostats,
 
 Congratulations, Grad!!! 🎓❤️
- You’re the smartest, prettiest, most ridiculously impressive human I know, and somehow you’re also the one who makes my heart do weird happy flips. 💛
-I feel so lucky to have met you—and luckier that I get to keep cheering for you even from a far. I miss you more than I want to admit and I’m counting down the days until I get to see you again.
-So proud of you. So happy for you. So sooo in love with everything you are. See you soon, grad 😘
+ You're the smartest, prettiest, most ridiculously impressive human I know, and somehow you're also the one who makes my heart do weird happy flips. 💛
+I feel so lucky to have met you—and luckier that I get to keep cheering for you even from a far. I miss you more than I want to admit and I'm counting down the days until I get to see you again.
+So proud of you. So happy for you. So sooo in love with everything you are. See you soon, grad 😘
 Bohoma Sthuthi!
 `;
 
@@ -32,8 +31,8 @@ Bohoma Sthuthi!
     "Go for a Walk"
   ];
   
-  // Music URL - replace with your own music URL
-  const songUrl = "https://soundcloud.com/addisonraemusic/headphones-on?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing";
+  // Updated music URL for "Headphones" by Addison Rae
+  const songUrl = "https://audio.jukehost.co.uk/aDAzEcNahH7FCzXgPtXsXGcttcNptYPI";
   
   const handleGreetingContinue = () => {
     setCurrentStep(1); // Move to Dandelion step
